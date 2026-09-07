@@ -22,6 +22,7 @@ test('purchasetest phones',async({page})=>{
     await purchase.selectphonelink()
     await purchase.addtocartbutton()
     await purchase.clickcart()
+    await expect(page.locator("h2").nth(1)).toHaveText("Total")
     await purchase.placeorderbutton()
 })
 
@@ -30,6 +31,7 @@ test('purchasetest laptops',async({page})=>{
     const purchase=new purchasepage(page)
     await purchase.laptoplink()
     await purchase.selectlaptoplink()
+    await expect(page.getByRole('link',{name:'Add to cart'})).toBeVisible()
     await purchase.addtocartbutton()
     await purchase.clickcart()
     await purchase.placeorderbutton()
@@ -42,6 +44,7 @@ test('purchasetest monitors',async({page})=>{
     await purchase.monitorlink()
     await purchase.selectmonitorlink()
     await purchase.addtocartbutton()
+    await expect(page.locator('#cartur')).toBeVisible()
     await purchase.clickcart()
     await purchase.placeorderbutton()
 })
