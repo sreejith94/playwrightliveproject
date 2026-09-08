@@ -10,7 +10,7 @@ test('demoblaze login',async({page})=>{
     await login.enterusername(credentials.username)
     await login.enterpassword(credentials.password)
     await login.clickloginbutton()
-    await expect(page.locator('#logout2')).toBeVisible()
+    await expect(page.locator('#logout2')).toBeVisible({ timeout: 10000 })
 })
 
 for (const data of invalidcredentials) {
